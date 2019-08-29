@@ -12,6 +12,16 @@ class UserFactory(factory.DjangoModelFactory):
     class Meta:
         model = User
 
-    first_name = faker.name()
+    first_name = faker.first_name()
+    last_name = faker.last_name()
     email = username = faker.email()
-    password = factory.PostGenerationMethodCall('set_password', faker.md5())
+    password = factory.PostGenerationMethodCall(
+        'set_password',
+        faker.password(
+            length=10,
+            special_chars=True,
+            digits=True,
+            upper_case=True,
+            lower_case=True,
+        )
+    )

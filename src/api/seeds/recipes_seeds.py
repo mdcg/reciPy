@@ -1,10 +1,8 @@
-import tempfile
-
 import factory
 from faker import Factory
 
 from api.models import Recipe
-from api.seeds.users import UserFactory
+from api.seeds.users_seeds import UserFactory
 
 faker = Factory.create()
 
@@ -17,7 +15,7 @@ class RecipeFactory(factory.DjangoModelFactory):
     user = factory.SubFactory(UserFactory)
     description = faker.text()
     steps = faker.text()
-    difficulty = faker.random_int(0, 100)
+    difficulty = faker.random_int(0, 10)
     image = faker.file_name(category=None, extension='jpeg')
     name = faker.sentence(
         nb_words=4,

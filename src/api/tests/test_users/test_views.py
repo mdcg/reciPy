@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 import hashlib
 
-from api.seeds.users import UserFactory
+from api.seeds.users_seeds import UserFactory
 
 
 class AuthenticationViewsAPITestCase(APITestCase):

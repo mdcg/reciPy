@@ -25,7 +25,7 @@ class SignUpView(APIView):
 
             response_data = {
                 'status': 'success',
-                'data': {
+                'payload': {
                     'user': {
                         'id': user.id,
                         'token': token.key,
@@ -36,7 +36,7 @@ class SignUpView(APIView):
 
         response_data = {
             'status': 'fail',
-            'data': user_to_register.errors,
+            'payload': user_to_register.errors,
         }
         return Response(response_data, status=status.HTTP_400_BAD_REQUEST)
 
@@ -50,7 +50,7 @@ class SignInView(APIView):
         if not username or not password:
             response_data = {
                 'status': 'fail',
-                'data': {
+                'payload': {
                     'username': ['A username is required.'],
                     'password': ['A password is required.'],
                 },
@@ -64,7 +64,7 @@ class SignInView(APIView):
 
             response_data = {
                 'status': 'success',
-                'data': {
+                'payload': {
                     'user': {
                         'id': user.id,
                         'token': token.key,
@@ -75,6 +75,6 @@ class SignInView(APIView):
 
         response_data = {
             'status': 'fail',
-            'data': None,
+            'payload': None,
         }
         return Response(response_data, status=status.HTTP_403_FORBIDDEN)

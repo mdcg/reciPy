@@ -24,7 +24,7 @@ class UserRecipesView(APIView):
 
         response_data = {
             'status': 'success',
-            'data': paginator.get_paginated_response({
+            'payload': paginator.get_paginated_response({
                 'recipes': serialized_recipes.data,
             }),
         }
@@ -38,7 +38,7 @@ class UserRecipesView(APIView):
 
             response_data = {
                 'status': 'success',
-                'data': {
+                'payload': {
                     'recipe': recipe.data,
                 },
             }
@@ -46,7 +46,7 @@ class UserRecipesView(APIView):
 
         response_data = {
             'status': 'fail',
-            'data': recipe.errors,
+            'payload': recipe.errors,
         }
         return Response(response_data, status=status.HTTP_400_BAD_REQUEST)
 
@@ -65,7 +65,7 @@ class RecipesView(APIView):
 
         response_data = {
             'status': 'success',
-            'data': paginator.get_paginated_response({
+            'payload': paginator.get_paginated_response({
                 'recipes': serialized_recipes.data,
             }),
         }

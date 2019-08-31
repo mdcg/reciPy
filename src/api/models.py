@@ -24,3 +24,6 @@ class Recipe(BaseModel):
         default=1,
         validators=[MaxValueValidator(10), MinValueValidator(1)]
     )
+
+    class Meta:
+        ordering = ['-created_at']
